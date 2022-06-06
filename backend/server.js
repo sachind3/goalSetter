@@ -12,7 +12,12 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+app.use("/api/users", require("./routes/userRoutes"));
 app.use("/api/goals", require("./routes/goalRoutes"));
+
+app.get("/", (req, res) => {
+  res.send("Welcome to goalsetters api");
+});
 
 app.use(errorHandler);
 
